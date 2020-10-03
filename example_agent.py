@@ -20,7 +20,6 @@ from kaggle_environments.envs.football.helpers import *
 # - Action enum is to be returned by the agent function.
 @human_readable_agent
 def agent(obs):
-    print(obs)
 
     # Make sure player is running.
     if Action.Sprint not in obs['sticky_actions']:
