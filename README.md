@@ -53,7 +53,7 @@ Agents can be run against each other using the env.run method. This expects 2 ag
 See scripts/run.py for an example. Not that if using a relative path, the working directory of the script should be set to the top level of the project. If using an IDE, this can be set in the run profile. Or it can be run from the command line:
 
 ```bash
-python3 -m scripts.run
+python3 -m scripts.run_agent_vs_agent
 ```
 
 Output should look something like:
@@ -84,4 +84,19 @@ kaggle competitions submit -c google-football -f example_agent.py -m "Test submi
 ```
 
 ## Multiple files
-...
+For example, agent using neural network (here saved into folder test_model). 
+
+1) Train example model
+    ```bash
+    python3 -m scripts.train_model
+    ```
+   This will output to test_model/
+2) Create main.py that defines the agent - see main.py in here as example. This loads model saved in test_model/.
+3) Package the required files
+    ```bash
+    tar -czvf submit.tar.gz main.py test_model
+    ```
+4) And submit
+    ```bash
+    kaggle competitions submit -c google-football -f submit.tar.gz -m "Test submit of example RL agent"
+    ```

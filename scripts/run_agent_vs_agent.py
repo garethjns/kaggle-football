@@ -8,8 +8,9 @@ if __name__ == "__main__":
                                           "scenario_name": "11_vs_11_kaggle"})
 
     # Define players
-    left_player = "random_agent.py"  # A custom agent, eg. random_agent.py or example_agent.py
+    left_player = "main.py"  # A custom agent, eg. random_agent.py or example_agent.py
     right_player = "run_right"  # eg. A built in 'AI' agent
+    right_player = "main.py"
 
     # Run the whole sim
     # Output returned is a list of length n_steps. Each step is a list containing the output for each player as a dict.
@@ -17,7 +18,7 @@ if __name__ == "__main__":
     output: List[Tuple[Dict[str, Any], Dict[str, Any]]] = env.run([left_player, right_player])
 
     for s, (left, right) in enumerate(output):
-        print(f"\n\nStep {s}")
+        print(f"\nStep {s}")
 
         print(f"Left player ({left_player}): \n"
               f"actions taken: {left['action']}, "
@@ -29,6 +30,8 @@ if __name__ == "__main__":
               f"actions taken: {right['action']}, "
               f"reward: {right['reward']}, "
               f"status: {right['status']}, "
-              f"info: {right['info']}")
+              f"info: {right['info']}\n")
+
+    print(f"Final score: {sum([r['reward'] for r in output[0]])} : {sum([r['reward'] for r in output[1]])}")
 
     env.render(mode="human", width=800, height=600)
