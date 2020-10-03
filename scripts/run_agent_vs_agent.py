@@ -10,7 +10,7 @@ if __name__ == "__main__":
     # Define players
     left_player = "main.py"  # A custom agent, eg. random_agent.py or example_agent.py
     right_player = "run_right"  # eg. A built in 'AI' agent
-    right_player = "main.py"
+    # right_player = "main.py"
 
     # Run the whole sim
     # Output returned is a list of length n_steps. Each step is a list containing the output for each player as a dict.

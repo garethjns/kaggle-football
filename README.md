@@ -2,7 +2,7 @@
 
 # Setup
 
-## Gfootball dependencies
+## GFootball dependencies
 ### Use precompiled GFootball version
 As per setup shown in https://www.kaggle.com/piotrstanczyk/gfootball-template-bot
 
@@ -35,17 +35,6 @@ def agent(obs) -> List[int]:
 
 See example_agent.py for an example using the template agent show here: https://www.kaggle.com/c/google-football/overview/getting-started
 See random_agent.py for an example that imports the agent from a module defined here.  
-
-To avoid path issues when running (see below) it's easiest to leave these files at the top of the project, ie. the same level as any modules they import from, for example from random_agent.py:
-```python
-from kaggle_football.random_agent.random_agent import RandomAgent
-
-AGENT = RandomAgent()
-
-def agent(obs):
-    return AGENT.get_action(obs)
-```
-
 
 # Running
 Agents can be run against each other using the env.run method. This expects 2 agents as input, which can be a custom path or predefined agent.
