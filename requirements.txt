@@ -1,0 +1,5 @@
+gfootball
+kaggle-environments
+kaggle
+IPython
+numpy
