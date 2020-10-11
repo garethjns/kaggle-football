@@ -554,7 +554,7 @@ def run_multiple_episodes(env: gym.Env, agent, n_episodes: int = 10,
     return total_episode_rewards
 
 
-def train_agent(output_path: str = 'test_model/'):
+def train_agent(output_path: str = 'saved_model/'):
     import gfootball  # noqa
     env = gym.make("GFootball-11_vs_11_kaggle-SMM-v0")
 
@@ -568,6 +568,13 @@ def train_agent(output_path: str = 'test_model/'):
 
     agent._action_model.save(os.path.join(output_path))
 
+    return agent
 
 if __name__ == "__main__":
-    train_agent('test_model/')
+
+
+    agent_ = train_agent('test_model/')
+    import pickle
+    import zlib
+    weights_str = zlib.compress(pickle.dumps(agent_._action_model.get_weights()))
+
