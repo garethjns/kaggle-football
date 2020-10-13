@@ -4,12 +4,13 @@ from kaggle_environments import make
 
 if __name__ == "__main__":
 
-    env = make("football", configuration={"save_video": True,
-                                          "scenario_name": "11_vs_11_kaggle"})
+    env = make("football", debug=True,
+               configuration={"save_video": True,
+                              "scenario_name": "11_vs_11_kaggle"})
 
     # Define players
     left_player = "main.py"  # A custom agent, eg. random_agent.py or example_agent.py
-    right_player = "run_right"  # eg. A built in 'AI' agent
+    right_player = "main.py"  # eg. A built in 'AI' agent
     # right_player = "main.py"
 
     # Run the whole sim

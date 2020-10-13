@@ -3,3 +3,5 @@ kaggle-environments
 kaggle
 IPython
 numpy
+imageio
+tqdm

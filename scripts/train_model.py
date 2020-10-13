@@ -6,6 +6,8 @@ https://github.com/garethjns/reinforcement-learning-keras
 
 import collections
 import os
+import pickle
+import zlib
 from dataclasses import dataclass
 from typing import Tuple, Any, List, Union, Callable, Iterable, Dict
 
@@ -570,11 +572,8 @@ def train_agent(output_path: str = 'saved_model/'):
 
     return agent
 
+
 if __name__ == "__main__":
-
-
     agent_ = train_agent('test_model/')
-    import pickle
-    import zlib
-    weights_str = zlib.compress(pickle.dumps(agent_._action_model.get_weights()))
 
+    weights_str = zlib.compress(pickle.dumps(agent_._action_model.get_weights()))
