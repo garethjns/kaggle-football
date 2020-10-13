@@ -72,7 +72,29 @@ If everything is self contained in one .py file, it can either be upload manuall
 kaggle competitions submit -c google-football -f example_agent.py -m "Test submit of example agent"
 ```
 
-## Multiple files
+## Model weights in single file
+It's possible to serialise model weights to a string and define them as a contestant inside the [agent].py. It's cumbersome, but it avoids problems trying to reload model weights to disk and uploaded in a .tar.gz (see "Multiple files a zip below)" )
+
+1) Train example model in an interactive console. This creates the variable weights_str, which is a compressed, serialized, version of the model weights, which is created with the code:
+   ```
+   weights_str = zlib.compress(pickle.dumps([keras model].get_weights()))
+   ```
+
+2) Manually copy and paste the contents of weights_str into main.py, in constant WEIGHTS_STR. eg:
+   ```python
+   WEIGHTS_STR = 'Serialised gibberish goes here'
+    
+    # These weights are deserialized and set with:
+   [keras model].set_weights(pickle.loads(zlib.decompress(WEIGHTS_STR)))
+   ```
+   
+3) And submit
+    ```bash
+    kaggle competitions submit -c google-football -f main.py -m "Test submit of main.py containing model weights and model code"
+    ```
+
+## Multiple files as zip (not working?)
+
 For example, agent using neural network (here saved into folder test_model). 
 
 1) Train example model
