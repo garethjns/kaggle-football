@@ -35,8 +35,8 @@ def generate_gif(env: gym.Env, n_steps: int = 20, suffix: str = "smm_env_", **kw
     tmp_dir = tempfile.TemporaryDirectory()
     _ = env.reset()
 
-    for s in tqdm(range(20)):
-        obs, _, _, _ = env.step(n_steps)
+    for s in tqdm(range(n_steps)):
+        obs, _, _, _ = env.step(5)
         fig, ax = plot_smm_obs(obs, **kwargs)
         fig.suptitle(f"Step: {s}")
         fig.tight_layout()
