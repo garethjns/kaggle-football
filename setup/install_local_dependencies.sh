@@ -15,4 +15,5 @@ apt-get install -y \
   libsmpeg-dev \
   libswscale-dev \
   libsdl2-gfx-dev \
-  libsdl2-ttf-dev
+  libsdl2-ttf-dev \
+  libfreetype6-dev
