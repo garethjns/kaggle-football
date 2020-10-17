@@ -29,7 +29,7 @@ def plot_smm_obs(obs: np.ndarray, expected_min: int = 0, expected_max: int = 255
     return fig, ax
 
 
-def generate_gif(env: gym.Env, n_steps: int = 20, suffix: str = "smm_env_") -> None:
+def generate_gif(env: gym.Env, n_steps: int = 20, suffix: str = "smm_env_", **kwargs) -> None:
     """Plot a few steps of an env and generate a .gif."""
 
     tmp_dir = tempfile.TemporaryDirectory()
@@ -37,7 +37,7 @@ def generate_gif(env: gym.Env, n_steps: int = 20, suffix: str = "smm_env_") -> N
 
     for s in tqdm(range(20)):
         obs, _, _, _ = env.step(n_steps)
-        fig, ax = plot_smm_obs(obs)
+        fig, ax = plot_smm_obs(obs, **kwargs)
         fig.suptitle(f"Step: {s}")
         fig.tight_layout()
         fig.savefig(f'{os.path.join(tmp_dir.name, str(s))}.png')
