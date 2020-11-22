@@ -4,7 +4,7 @@ Run agent defined in main.py with an observation similar to those that it will r
 Useful for debugging into main.py.
 """
 import sys
-from typing import List
+import time
 
 import numpy as np
 from kaggle_environments import make
@@ -20,11 +20,14 @@ if __name__ == "__main__":
     # This is the observation that is passed to agent function
     obs_kag_env = env.state[0]['observation']
 
-    for _ in range(100):
+    step_times = []
+    for _ in range(3000):
+        t0 = time.time()
         action = agent(obs_kag_env)
+        step_times.append(time.time() - t0)
 
         try:
-            assert isinstance(action, List)
+            assert isinstance(action, list)
             assert len(action) == 1
             assert isinstance(action[0], int) or isinstance(action[0], np.integer)
 
@@ -35,3 +38,6 @@ if __name__ == "__main__":
         other_agent_action = [0]
         full_obs = env.step([action, other_agent_action])
         obs_kag_env = full_obs[0]['observation']
+
+    print(step_times)
+    print(np.mean(step_times))

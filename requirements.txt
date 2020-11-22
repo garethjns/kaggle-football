@@ -1,7 +1,12 @@
-gfootball
+# gfootball
 kaggle-environments
 kaggle
 IPython
 numpy
 imageio
 tqdm
+pandas
+joblib
+h5py
+tables
+
